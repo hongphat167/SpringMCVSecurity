@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Hong Phat Company Home Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light grayish-blue background */
+            color: #343a40; /* Dark gray text color */
+            padding-top: 50px; /* Add some space at the top */
+            font-family: Arial, sans-serif; /* Use a common font for better readability */
+        }
+
+        .container {
+            max-width: 600px; /* Limit content width for better readability */
+            margin: 0 auto; /* Center the content horizontally */
+        }
+
+        h2 {
+            color: #007bff; /* Blue heading color */
+            margin-bottom: 30px; /* Add space below heading */
+            font-weight: bold; /* Make heading bold */
+        }
+
+        hr {
+            border-top: 2px solid #007bff; /* Blue horizontal line */
+            margin-bottom: 30px; /* Add space below the line */
+        }
+
+        p {
+            font-size: 1.2em; /* Slightly larger paragraph font size */
+            margin-bottom: 20px; /* Add space below paragraphs */
+            line-height: 1.6; /* Improve line spacing */
+        }
+
+        a {
+            color: #007bff; /* Blue link color */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        .text-center {
+            text-align: center; /* Center align text */
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Red background color for danger button */
+            border-color: #dc3545; /* Red border color for danger button */
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Darken button color on hover */
+            border-color: #bd2130; /* Darken border color on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Hong Phat Company</h2>
+    <hr>
+    <p class="text-center">Chào mừng đến với Công ty Hồng Phát</p>
+    <p class="text-center">
+        User: <span sec:authentication="principal.username"></span>
+        <br>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+    </p>
+    <div sec:authorize="hasRole('MANAGER')">
+    <p>
+        <a th:href="@{/leaders}" class="btn btn-primary">LeaderShip Meeting</a>
+        <span class="text-muted">(This is only for MANAGER)</span>
+    </p>
+    </div>
+    <div sec:authorize="hasRole('ADMIN')">
+    <p>
+        <a th:href="@{/systems}" class="btn btn-primary">ADMIN Meeting</a>
+        <span class="text-muted">(This is only for ADMIN)</span>
+    </p>
+    </div>
+    <div class="text-center">
+        <form th:action="@{/logout}" method="POST">
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

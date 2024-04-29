@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Leader Home Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a common font for better readability */
+            background-color: #f8f9fa; /* Set a light grayish background */
+            padding: 50px; /* Add some padding for content */
+            text-align: center; /* Center-align the content */
+        }
+
+        h2 {
+            color: #007bff; /* Set a blue color for headings */
+        }
+
+        hr {
+            border: none; /* Remove the border */
+            border-top: 2px solid #007bff; /* Add a blue top border */
+            margin: 30px 0; /* Add space above and below the horizontal line */
+        }
+
+        p {
+            font-size: 18px; /* Increase font size for better readability */
+            line-height: 1.6; /* Improve line spacing */
+        }
+
+        a {
+            color: #007bff; /* Set a blue color for links */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Leader Home Page</h2>
+    <hr>
+    <p>See you in Brazil<br>Keep ...</p>
+    <hr>
+    <a th:href="@{/}" class="btn btn-primary">Back to Home Page</a>
+</div>
+</body>
+</html>
